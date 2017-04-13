@@ -4,31 +4,24 @@ window.onload = function(){
   var isDrawing;
   var color;
 
-  var saveButton = document.querySelector('#save')
-  var loadButton = document.querySelector('#load')
+  var save = document.querySelector('#save')
+  var load = document.querySelector('#load')
 
-  saveButton.onclick = savepicture
-  loadButton.onclick = loadpicture
+  save.onclick = function (e){
+    localStorage.setItem(context, canvas.toDataURL());
+    console.log("save" + e)
+  }
 
-
-var loadpicture = function (){
-
-console.log("load")  
-
-
+  //saveButton.onclick = savepicture
+  load.onclick = function (e){
+  console.log("load" + e)  
   var dataURL = localStorage.getItem(context);
   var img = new Image;
   img.src = dataURL;
   context.drawImage(img, 0, 0);
-
-
 }
 
-var savepicture = function (){
-  localStorage.setItem(context, canvas.toDataURL());
-  console.log("save")
 
-}
 
   var colourPicker = document.querySelector('input')
   colourPicker.onchange = function(){
